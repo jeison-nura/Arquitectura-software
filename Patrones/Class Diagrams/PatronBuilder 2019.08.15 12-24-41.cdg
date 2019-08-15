@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="PatronBuilder">
+  <ClassDiagramComponents>
+    <Class name="Creador" package="patronbuilder" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="_textBuilder" type="textBuilder" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="setTextBuilder" returnType="void" visibility="public">
+          <Argument type="textBuilder" name="tb"/>
+        </Method>
+        <Method name="getTexto" returnType="Texto" visibility="public"/>
+        <Method name="construirTexto" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="emailConcrete" package="patronbuilder" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="ConstruirEncabezado" returnType="void" visibility="public"/>
+        <Method name="ConstruirCuerpo" returnType="void" visibility="public"/>
+        <Method name="ConstruirConcluciones" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="jsonConcrete" package="patronbuilder" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="ConstruirEncabezado" returnType="void" visibility="public"/>
+        <Method name="ConstruirCuerpo" returnType="void" visibility="public"/>
+        <Method name="ConstruirConcluciones" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PatronBuilder" package="patronbuilder" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="textBuilder" package="patronbuilder" visibility="public" isAbstract="true" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="text" type="Texto" visibility="protected"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getTexto" returnType="Texto" visibility="public"/>
+        <Method name="ConstruirEncabezado" returnType="void" visibility="public" isAbstract="true"/>
+        <Method name="ConstruirCuerpo" returnType="void" visibility="public" isAbstract="true"/>
+        <Method name="ConstruirConcluciones" returnType="void" visibility="public" isAbstract="true"/>
+      </Methods>
+    </Class>
+    <Class name="Texto" package="patronbuilder" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="encabezado" type="String" visibility="public"/>
+        <Field name="cuerpo" type="String" visibility="public"/>
+        <Field name="concluciones" type="String" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="setEncabezado" returnType="void" visibility="public">
+          <Argument type="String" name="encabezado"/>
+        </Method>
+        <Method name="setCuerpo" returnType="void" visibility="public">
+          <Argument type="String" name="cuerpo"/>
+        </Method>
+        <Method name="setConcluciones" returnType="void" visibility="public">
+          <Argument type="String" name="concluciones"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="xmlConcrete" package="patronbuilder" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="ConstruirEncabezado" returnType="void" visibility="public"/>
+        <Method name="ConstruirCuerpo" returnType="void" visibility="public"/>
+        <Method name="ConstruirConcluciones" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="patronbuilder.xmlConcrete" target="patronbuilder.textBuilder"/>
+    <HasRelation name="_textBuilder" source="patronbuilder.Creador" target="patronbuilder.textBuilder" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="patronbuilder.Creador" target="patronbuilder.Texto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="patronbuilder.emailConcrete" target="patronbuilder.textBuilder"/>
+    <UseRelation source="patronbuilder.Creador" target="patronbuilder.textBuilder" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="patronbuilder.textBuilder" target="patronbuilder.Texto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="patronbuilder.jsonConcrete" target="patronbuilder.textBuilder"/>
+    <HasRelation name="text" source="patronbuilder.textBuilder" target="patronbuilder.Texto" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
